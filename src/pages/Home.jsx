@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ButtonCart from '../Components/ButtonCart';
-import * as api from '../services/api';
 import Categories from '../Components/Categories';
 
 class Home extends Component {
