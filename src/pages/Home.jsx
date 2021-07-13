@@ -11,10 +11,24 @@ class Home extends Component {
     this.state = {
       searchText: '',
       products: [],
+      // categories: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.setProductsCategory = this.setProductsCategory.bind(this);
   }
+
+  // componentDidMount() {
+  //   this.fetchCategories();
+  // }
+
+  // fetchCategories = async () => {
+  //   const { getCategories } = api;
+  //   const requestReturn = await getCategories();
+  //   this.setState({
+  //     categories: [...requestReturn],
+  //   });
+  // }
 
   handleChange({ target }) {
     const { name } = target;
@@ -28,6 +42,14 @@ class Home extends Component {
     this.fetchProductByText();
   }
 
+  // Requisito 6 - Ajuda monitor Daniel
+  async setProductsCategory(id) {
+    const { results: products } = await productsAPI.getProductsFromCategoryAndQuery(id);
+    this.setState({
+      products,
+    });
+  }
+
   async fetchProductByText() {
     const { searchText } = this.state;
     const { results: products } = await productsAPI
@@ -37,6 +59,10 @@ class Home extends Component {
     });
   }
 
+  // filterCategoriesAndText(serachText, products) {
+
+  // }
+
   render() {
     const { searchText, products } = this.state;
     return (
@@ -45,7 +71,7 @@ class Home extends Component {
         <h4 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h4>
-        <Categories />
+        <Categories setProductsCategory={ this.setProductsCategory } />
         <Input
           value={ searchText }
           name="searchText"

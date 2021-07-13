@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import * as api from '../services/api';
 
 class Categories extends Component {
@@ -13,29 +14,44 @@ class Categories extends Component {
     this.fetchCategories();
   }
 
-        fetchCategories = async () => {
-          const { getCategories } = api;
-          const requestReturn = await getCategories();
-          this.setState({
-            categories: [...requestReturn],
-          });
-        }
+  fetchCategories = async () => {
+    const { getCategories } = api;
+    const requestReturn = await getCategories();
+    this.setState({
+      categories: [...requestReturn],
+    });
+  }
 
-        render() {
-          const { categories } = this.state;
-          return (
-            <ol>
-              {categories.map(({ id, name }) => (
-                <li
-                  key={ id }
-                  category={ name }
-                  data-testid="category"
-                >
-                  {name}
-                </li>))}
-            </ol>
-          );
-        }
+  render() {
+    const { categories } = this.state;
+    const { setProductsCategory } = this.props;
+    return (
+      <ol>
+        {categories.map(({ id, name }) => (
+          <li
+            key={ id }
+            category={ name }
+            data-testid="category"
+          >
+            <button
+              value={ id }
+              type="button"
+              onClick={ (event) => setProductsCategory(event.target.value) }
+              // console.log(event.target.value)
+              // setProductsCategory(event.target.value)
+            >
+              { name }
+            </button>
+          </li>))}
+      </ol>
+    );
+  }
 }
 
 export default Categories;
+
+// lembrar props
+
+Categories.propTypes = {
+  setProductsCategory: PropTypes.func.isRequired,
+};
