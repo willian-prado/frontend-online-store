@@ -11,6 +11,7 @@ class Home extends Component {
     this.state = {
       searchText: '',
       products: [],
+      id: '',
       // categories: [],
     };
     this.handleChange = this.handleChange.bind(this);
@@ -39,21 +40,20 @@ class Home extends Component {
   }
 
   handleClick() {
-    this.fetchProductByText();
+    this.fetchProduct();
   }
 
   // Requisito 6 - Ajuda monitor Daniel
   async setProductsCategory(id) {
-    const { results: products } = await productsAPI.getProductsFromCategoryAndQuery(id);
     this.setState({
-      products,
-    });
+      id,
+    }, () => this.fetchProduct());
   }
 
-  async fetchProductByText() {
-    const { searchText } = this.state;
+  async fetchProduct() {
+    const { id, searchText } = this.state;
     const { results: products } = await productsAPI
-      .getProductsFromCategoryAndQuery('', searchText);
+      .getProductsFromCategoryAndQuery(id, searchText);
     this.setState({
       products,
     });
