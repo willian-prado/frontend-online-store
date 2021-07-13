@@ -15,9 +15,7 @@ class Categories extends Component {
 
         fetchCategories = async () => {
           const { getCategories } = api;
-          console.log(api);
           const requestReturn = await getCategories();
-          console.log(requestReturn);
           this.setState({
             categories: [...requestReturn],
           });
