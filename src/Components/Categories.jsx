@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import * as api from '../services/api';
+// import * as api from '../services/api';
 
 class Categories extends Component {
-  constructor() {
-    super();
-    this.state = {
-      categories: [],
-    };
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     categories: [],
+  //   };
+  // }
 
-  componentDidMount() {
-    this.fetchCategories();
-  }
+  // componentDidMount() {
+  //   this.fetchCategories();
+  // }
 
-  fetchCategories = async () => {
-    const { getCategories } = api;
-    const requestReturn = await getCategories();
-    this.setState({
-      categories: [...requestReturn],
-    });
-  }
+  // fetchCategories = async () => {
+  //   const { getCategories } = api;
+  //   const requestReturn = await getCategories();
+  //   this.setState({
+  //     categories: [...requestReturn],
+  //   });
+  // }
 
   render() {
-    const { categories } = this.state;
+    const { categories } = this.props;
     const { setProductsCategory } = this.props;
     return (
       <ol>
@@ -50,8 +50,7 @@ class Categories extends Component {
 
 export default Categories;
 
-// lembrar props
-
 Categories.propTypes = {
   setProductsCategory: PropTypes.func.isRequired,
+  categories: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
