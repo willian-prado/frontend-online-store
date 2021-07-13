@@ -59,10 +59,6 @@ class Home extends Component {
     });
   }
 
-  // filterCategoriesAndText(serachText, products) {
-
-  // }
-
   render() {
     const { searchText, products, categories } = this.state;
 
