@@ -5,10 +5,14 @@ import NotFound from './NotFound';
 
 export default class ProductList extends React.Component {
   render() {
-    const { products } = this.props;
+    const { products, storeItems } = this.props;
     const productList = (
       <div>
-        { products.map((p) => <ProductCard key={ p.id } product={ p } />) }
+        { products.map((p) => (<ProductCard
+          key={ p.id }
+          product={ p }
+          storeItems={ storeItems }
+        />)) }
       </div>
     );
     return (
@@ -21,4 +25,5 @@ export default class ProductList extends React.Component {
 
 ProductList.propTypes = {
   products: PropTypes.arrayOf(Object).isRequired,
+  storeItems: PropTypes.func.isRequired,
 };
