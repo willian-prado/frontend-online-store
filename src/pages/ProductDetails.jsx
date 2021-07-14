@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { AiOutlineHome } from 'react-icons/ai';
 
 export default class ProductDetails extends Component {
   constructor() {
@@ -28,7 +30,8 @@ export default class ProductDetails extends Component {
     const { product: { title } } = this.state;
     return (
       <div>
-        <p data-testid="product-detail-name">{ title }</p>
+        <Link to="/"><AiOutlineHome /></Link>
+        <h3 data-testid="product-detail-name">{ title }</h3>
       </div>
     );
   }
