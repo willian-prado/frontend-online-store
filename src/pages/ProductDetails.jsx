@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { AiOutlineHome, AiOutlineCaretLeft, AiOutlineCaretRight } from 'react-icons/ai';
+import { AiOutlineHome } from 'react-icons/ai';
+import ImagesScrollButtons from '../Components/ImagesScrollButtons';
 
 export default class ProductDetails extends Component {
   constructor() {
@@ -58,12 +59,13 @@ export default class ProductDetails extends Component {
         <h3 data-testid="product-detail-name">{ title }</h3>
         {pictures.length && <img src={ pictures[picIndex].url } alt={ title } />}
         <div>
-          <button type="button" onClick={ this.decreasePicIndex }>
-            <AiOutlineCaretLeft />
-          </button>
-          <button type="button" onClick={ this.increasePicIndex }>
-            <AiOutlineCaretRight />
-          </button>
+          {
+            (pictures.length > 1)
+              && <ImagesScrollButtons
+                decreaseIndex={ this.decreasePicIndex }
+                increaseIndex={ this.increasePicIndex }
+              />
+          }
         </div>
       </div>
     );
