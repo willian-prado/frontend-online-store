@@ -9,7 +9,7 @@ export default class ProductDetails extends Component {
     super();
 
     this.state = {
-      product: {},
+      product: undefined,
       pictures: [],
       picIndex: 0,
     };
@@ -52,12 +52,14 @@ export default class ProductDetails extends Component {
   }
 
   render() {
-    const { product: { title }, pictures, picIndex } = this.state;
+    const { product, pictures, picIndex } = this.state;
+    if (!product) return null;
+    const { title } = product;
     return (
       <div>
         <Link to="/"><AiOutlineHome /></Link>
         <h3 data-testid="product-detail-name">{ title }</h3>
-        {pictures.length && <img src={ pictures[picIndex].url } alt={ title } />}
+        <img src={ pictures[picIndex].url } alt={ title } />
         <div>
           {
             (pictures.length > 1)
