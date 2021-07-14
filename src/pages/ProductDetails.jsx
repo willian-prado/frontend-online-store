@@ -54,7 +54,7 @@ export default class ProductDetails extends Component {
   render() {
     const { product, pictures, picIndex } = this.state;
     if (!product) return null;
-    const { title } = product;
+    const { title, attributes } = product;
     return (
       <div>
         <Link to="/"><AiOutlineHome /></Link>
@@ -68,6 +68,14 @@ export default class ProductDetails extends Component {
                 increaseIndex={ this.increasePicIndex }
               />
           }
+          <h3>Características principais</h3>
+          <ol>
+            {attributes.map((attribute) => {
+              const { id, name } = attribute;
+              const value = 'value_name';
+              return (<li key={ id }>{ `${name}: ${attribute[value]} `}</li>);
+            })}
+          </ol>
         </div>
       </div>
     );
