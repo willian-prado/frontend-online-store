@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class ProductDetails extends Component {
   constructor() {
@@ -14,7 +15,7 @@ export default class ProductDetails extends Component {
   }
 
   async getProduct() {
-    const { match: { params: { id } }} = this.props;
+    const { match: { params: { id } } } = this.props;
 
     const response = await fetch(`https://api.mercadolibre.com/items/${id}`);
     const result = await response.json();
@@ -32,3 +33,11 @@ export default class ProductDetails extends Component {
     );
   }
 }
+
+ProductDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
