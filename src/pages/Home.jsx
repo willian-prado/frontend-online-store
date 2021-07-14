@@ -11,9 +11,16 @@ class Home extends Component {
     this.state = {
       searchText: '',
       products: [],
+      id: '',
+      categories: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.setProductsCategory = this.setProductsCategory.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchCategories();
   }
 
   handleChange({ target }) {
@@ -25,27 +32,46 @@ class Home extends Component {
   }
 
   handleClick() {
-    this.fetchProductByText();
+    this.fetchProduct();
   }
 
-  async fetchProductByText() {
-    const { searchText } = this.state;
+  // Requisito 6 - Ajuda monitor Daniel
+  async setProductsCategory(id) {
+    this.setState({
+      id,
+    }, () => this.fetchProduct());
+  }
+
+  fetchCategories = async () => {
+    const { getCategories } = productsAPI;
+    const requestReturn = await getCategories();
+    this.setState({
+      categories: [...requestReturn],
+    });
+  }
+
+  async fetchProduct() {
+    const { id, searchText } = this.state;
     const { results: products } = await productsAPI
-      .getProductsFromCategoryAndQuery('', searchText);
+      .getProductsFromCategoryAndQuery(id, searchText);
     this.setState({
       products,
     });
   }
 
   render() {
-    const { searchText, products } = this.state;
+    const { searchText, products, categories } = this.state;
+
     return (
       <div>
         <ButtonCart />
         <h4 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h4>
-        <Categories />
+        <Categories
+          categories={ categories }
+          setProductsCategory={ this.setProductsCategory }
+        />
         <Input
           value={ searchText }
           name="searchText"
