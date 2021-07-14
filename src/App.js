@@ -18,7 +18,6 @@ class App extends Component {
 
   addItemToCart(product) {
     const { shoppingCart } = this.state;
-    console.log(product);
     this.setState({
       shoppingCart: [...shoppingCart, product],
     });
@@ -51,7 +50,14 @@ class App extends Component {
               renderAddButtonCart={ this.renderAddButtonCart }
             />) }
           />
-          <Route exact path="/shopping-cart" component={ Cart } />
+          <Route
+            exact
+            path="/shopping-cart"
+            render={ (props) => (<Cart
+              { ...props }
+              productList={ shoppingCart }
+            />) }
+          />
           <Route exact path="/" component={ Home } />
         </Switch>
       </BrowserRouter>
