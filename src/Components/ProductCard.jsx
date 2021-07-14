@@ -4,25 +4,44 @@ import { Link } from 'react-router-dom';
 
 class ProductCard extends React.Component {
   render() {
-    const { product } = this.props;
+    const { product, storeItems } = this.props;
     const { title, thumbnail, price, id } = product;
     return (
-      <Link to={ `/product-details/${id}` } data-testid="product-detail-link">
-        <div data-testid="product">
-          <div>
-            { title }
+      <div>
+        <Link to={ `/product-details/${id}` } data-testid="product-detail-link">
+          <div data-testid="product">
+            <div data-testid="shopping-cart-product-name">
+              { title }
+            </div>
+            <div>
+              <img src={ thumbnail } alt={ `${title}` } />
+            </div>
+            <div>
+              { price }
+            </div>
           </div>
-          <div>
-            <img src={ thumbnail } alt={ `${title}` } />
-          </div>
-          <div>
-            { price }
-          </div>
+          <p data-testid="shopping-cart-product-quantity">1</p>
+        </Link>
+        <div>
+          <button
+            type="button"
+            onClick={ () => storeItems(product) }
+            data-testid="product-add-to-cart"
+          >
+            {' '}
+            Adicionar ao Carrinho
+            {' '}
+
+          </button>
         </div>
-      </Link>
+      </div>
     );
   }
 }
+
+ProductCard.defaultProps = {
+  storeItems: undefined,
+};
 
 ProductCard.propTypes = {
   product: PropTypes.shape({
@@ -31,5 +50,6 @@ ProductCard.propTypes = {
     price: PropTypes.number,
     id: PropTypes.string,
   }).isRequired,
+  storeItems: PropTypes.func,
 };
 export default ProductCard;

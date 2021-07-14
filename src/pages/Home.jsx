@@ -17,6 +17,7 @@ class Home extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.setProductsCategory = this.setProductsCategory.bind(this);
+    this.storeItems = this.storeItems.bind(this);
   }
 
   componentDidMount() {
@@ -48,6 +49,16 @@ class Home extends Component {
     this.setState({
       categories: [...requestReturn],
     });
+  }
+
+  storeItems(product) {
+    if (localStorage.getItem('ItemCart') !== null) {
+      let actualStorage = JSON.parse(localStorage.getItem('ItemCart'));
+      actualStorage = [...actualStorage, product];
+      localStorage.setItem('ItemCart', JSON.stringify(actualStorage));
+    } else {
+      localStorage.setItem('ItemCart', JSON.stringify([product]));
+    }
   }
 
   async fetchProduct() {
@@ -87,7 +98,10 @@ class Home extends Component {
         >
           Buscar
         </button>
-        <ProductList { ...{ products } } />
+        <ProductList
+          { ...{ products } }
+          storeItems={ this.storeItems }
+        />
       </div>
     );
   }
