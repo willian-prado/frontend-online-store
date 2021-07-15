@@ -10,17 +10,14 @@ class ProductCard extends React.Component {
       <div>
         <Link to={ `/product-details/${id}` } data-testid="product-detail-link">
           <div data-testid="product">
-            <div data-testid="shopping-cart-product-name">
-              { title }
-            </div>
+            <h3>{ title }</h3>
             <div>
               <img src={ thumbnail } alt={ `${title}` } />
             </div>
-            <div>
+            <p>
               { price }
-            </div>
+            </p>
           </div>
-          <p data-testid="shopping-cart-product-quantity">1</p>
         </Link>
         <div>
           <button

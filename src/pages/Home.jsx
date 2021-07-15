@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ButtonCart from '../Components/ButtonCart';
 import Categories from '../Components/Categories';
 import ProductList from '../Components/ProductList';
@@ -17,7 +18,7 @@ class Home extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.setProductsCategory = this.setProductsCategory.bind(this);
-    this.storeItems = this.storeItems.bind(this);
+    // this.storeItems = this.storeItems.bind(this);
   }
 
   componentDidMount() {
@@ -51,15 +52,16 @@ class Home extends Component {
     });
   }
 
-  storeItems(product) {
-    if (localStorage.getItem('ItemCart') !== null) {
-      let actualStorage = JSON.parse(localStorage.getItem('ItemCart'));
-      actualStorage = [...actualStorage, product];
-      localStorage.setItem('ItemCart', JSON.stringify(actualStorage));
-    } else {
-      localStorage.setItem('ItemCart', JSON.stringify([product]));
-    }
-  }
+  // requisito 8
+  // storeItems(product) {
+  //   if (localStorage.getItem('ItemCart') !== null) {
+  //     let actualStorage = JSON.parse(localStorage.getItem('ItemCart'));
+  //     actualStorage = [...actualStorage, product];
+  //     localStorage.setItem('ItemCart', JSON.stringify(actualStorage));
+  //   } else {
+  //     localStorage.setItem('ItemCart', JSON.stringify([product]));
+  //   }
+  // }
 
   async fetchProduct() {
     const { id, searchText } = this.state;
@@ -72,7 +74,7 @@ class Home extends Component {
 
   render() {
     const { searchText, products, categories } = this.state;
-
+    const { storeItems } = this.props;
     return (
       <div>
         <ButtonCart />
@@ -100,11 +102,15 @@ class Home extends Component {
         </button>
         <ProductList
           { ...{ products } }
-          storeItems={ this.storeItems }
+          storeItems={ storeItems }
         />
       </div>
     );
   }
 }
+
+Home.propTypes = {
+  storeItems: PropTypes.func.isRequired,
+};
 
 export default Home;

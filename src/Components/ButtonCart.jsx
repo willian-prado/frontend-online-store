@@ -7,7 +7,7 @@ class ButtonCart extends Component {
     return (
       <div>
         <Link
-          to="shopping-cart"
+          to="/shopping-cart"
           data-testid="shopping-cart-button"
         >
           <RiShoppingCartLine />

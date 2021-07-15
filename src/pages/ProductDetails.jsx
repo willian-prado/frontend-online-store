@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { AiOutlineHome } from 'react-icons/ai';
 import ImagesScrollButtons from '../Components/ImagesScrollButtons';
+import ButtonCart from '../Components/ButtonCart';
 
 export default class ProductDetails extends Component {
   constructor() {
@@ -12,6 +13,7 @@ export default class ProductDetails extends Component {
       product: undefined,
       pictures: [],
       picIndex: 0,
+      // shoppingCart: [],
     };
 
     this.decreasePicIndex = this.decreasePicIndex.bind(this);
@@ -50,14 +52,38 @@ export default class ProductDetails extends Component {
       return { picIndex: picIndex + 1 };
     });
   }
+  // funções abaixo p requisito 9
+
+  // addItemToCart(product) {
+  //   const { shoppingCart } = this.state;
+  //   this.setState = {
+  //     shoppingCart: [...shoppingCart, product],
+  //   };
+  // }
+
+  // renderAddButtonCart(product) {
+  //   return (
+  //     <button
+  //       type="button"
+  //       data-testid="product-detail-add-to-cart"
+  //       onClick={ () => this.addItemToCart(product) }
+  //     >
+  //       Adicionar ao carrinho
+  //     </button>
+  //   );
+  // }
 
   render() {
     const { product, pictures, picIndex } = this.state;
+    const { renderAddButtonCart } = this.props;
+
     if (!product) return null;
     const { title, attributes } = product;
+
     return (
       <div>
         <Link to="/"><AiOutlineHome /></Link>
+        <ButtonCart />
         <h3 data-testid="product-detail-name">{ title }</h3>
         <img src={ pictures[picIndex].url } alt={ title } />
         <div>
@@ -77,6 +103,11 @@ export default class ProductDetails extends Component {
             })}
           </ol>
         </div>
+
+        <div>
+          { renderAddButtonCart(product) }
+          {/* { console.log(product) } */}
+        </div>
       </div>
     );
   }
@@ -88,4 +119,5 @@ ProductDetails.propTypes = {
       id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  renderAddButtonCart: PropTypes.func.isRequired,
 };
