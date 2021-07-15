@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineHome } from 'react-icons/ai';
 import PropTypes from 'prop-types';
-import ProductCard from '../Components/ProductCard';
+import CartItem from '../Components/CartItem';
 
 class Cart extends Component {
   constructor(props) {
@@ -53,10 +53,12 @@ class Cart extends Component {
               Limpar Items
 
             </button>
-            {cartItems.map((item) => (<ProductCard
+            {cartItems.map((item) => (<CartItem
               key={ item.id }
               title={ item.title }
-              product={ item }
+              image={ item.thumbnail }
+              price={ item.price }
+              quantity={ 1 }
             />))}
           </div>
         </div>
