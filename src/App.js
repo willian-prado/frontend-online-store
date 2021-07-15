@@ -10,25 +10,53 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      shoppingCart: [],
+      cartItems: [],
     };
     this.renderAddButtonCart = this.renderAddButtonCart.bind(this);
-    this.addItemToCart = this.addItemToCart.bind(this);
+    // this.addItemToCart = this.addItemToCart.bind(this);
+    this.getItemsFromStorage = this.getItemsFromStorage.bind(this);
+    this.storeItems = this.storeItems.bind(this);
   }
 
-  addItemToCart(product) {
-    const { shoppingCart } = this.state;
-    this.setState({
-      shoppingCart: [...shoppingCart, product],
-    });
+  // Requisito 8 - funcao q veio do Home
+
+  getItemsFromStorage() {
+    if (localStorage.getItem('ItemCart')) {
+      let actualStorage = localStorage.getItem('ItemCart');
+      actualStorage = JSON.parse(actualStorage);
+      this.setState({
+        cartItems: [...actualStorage],
+      });
+    } else {
+      this.setState({
+        cartItems: undefined,
+      });
+    }
   }
+
+  storeItems(product) {
+    if (localStorage.getItem('ItemCart') !== null) {
+      let actualStorage = JSON.parse(localStorage.getItem('ItemCart'));
+      actualStorage = [...actualStorage, product];
+      localStorage.setItem('ItemCart', JSON.stringify(actualStorage));
+    } else {
+      localStorage.setItem('ItemCart', JSON.stringify([product]));
+    }
+  }
+
+  // addItemToCart(product) {
+  //   const { cartItems } = this.state;
+  //   this.setState({
+  //     cartItems: [...cartItems, product],
+  //   });
+  // }
 
   renderAddButtonCart(product) {
     return (
       <button
         type="button"
         data-testid="product-detail-add-to-cart"
-        onClick={ () => this.addItemToCart(product) }
+        onClick={ () => this.storeItems(product) }
       >
         Adicionar ao carrinho
       </button>
@@ -36,7 +64,7 @@ class App extends Component {
   }
 
   render() {
-    const { shoppingCart } = this.state;
+    const { cartItems } = this.state;
 
     return (
       <BrowserRouter>
@@ -46,8 +74,9 @@ class App extends Component {
             path="/product-details/:id"
             render={ (props) => (<ProductDetails
               { ...props }
-              shoppingCart={ shoppingCart }
+              cartItems={ cartItems }
               renderAddButtonCart={ this.renderAddButtonCart }
+              storeItems={ this.storeItems }
             />) }
           />
           <Route
@@ -55,10 +84,18 @@ class App extends Component {
             path="/shopping-cart"
             render={ (props) => (<Cart
               { ...props }
-              productList={ shoppingCart }
+              cartItems={ cartItems }
+              getItemsFromStorage={ this.getItemsFromStorage }
             />) }
           />
-          <Route exact path="/" component={ Home } />
+          <Route
+            exact
+            path="/"
+            render={ (props) => (<Home
+              { ...props }
+              storeItems={ this.storeItems }
+            />) }
+          />
         </Switch>
       </BrowserRouter>
     );
