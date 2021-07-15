@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Cart from './pages/Cart';
 import './App.css';
-
 import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
+import Checkout from './pages/Checkout';
 
 class App extends Component {
   constructor() {
@@ -94,6 +94,13 @@ class App extends Component {
             render={ (props) => (<Home
               { ...props }
               storeItems={ this.storeItems }
+            />) }
+          />
+          <Route
+            path="/checkout"
+            render={ (props) => (<Checkout
+              { ...props }
+              cartItems={ cartItems }
             />) }
           />
         </Switch>

@@ -45,6 +45,7 @@ class Cart extends Component {
       return (
         <div>
           <Link to="/"><AiOutlineHome /></Link>
+          <Link data-testid="checkout-products" to="/checkout">Finalizar compra</Link>
           <div>
             <button
               type="button"
@@ -67,6 +68,7 @@ class Cart extends Component {
     return (
       <div>
         <Link to="/"><AiOutlineHome /></Link>
+        <Link data-testid="checkout-products" to="/checkout">Finalizar compra</Link>
         <h3 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h3>
       </div>
     );
