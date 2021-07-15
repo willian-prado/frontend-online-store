@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { AiOutlineHome } from 'react-icons/ai';
 import ImagesScrollButtons from '../Components/ImagesScrollButtons';
+import ButtonCart from '../Components/ButtonCart';
 
 export default class ProductDetails extends Component {
   constructor() {
@@ -82,6 +83,7 @@ export default class ProductDetails extends Component {
     return (
       <div>
         <Link to="/"><AiOutlineHome /></Link>
+        <ButtonCart />
         <h3 data-testid="product-detail-name">{ title }</h3>
         <img src={ pictures[picIndex].url } alt={ title } />
         <div>
