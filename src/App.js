@@ -17,8 +17,6 @@ class App extends Component {
     this.storeItems = this.storeItems.bind(this);
   }
 
-  // Requisito 8 - funcao q veio do Home
-
   getItemsFromStorage() {
     if (localStorage.getItem('ItemCart')) {
       let actualStorage = localStorage.getItem('ItemCart');

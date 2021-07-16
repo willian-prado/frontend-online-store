@@ -13,7 +13,6 @@ export default class ProductDetails extends Component {
       product: undefined,
       pictures: [],
       picIndex: 0,
-      // shoppingCart: [],
     };
 
     this.decreasePicIndex = this.decreasePicIndex.bind(this);
@@ -52,26 +51,6 @@ export default class ProductDetails extends Component {
       return { picIndex: picIndex + 1 };
     });
   }
-  // funções abaixo p requisito 9
-
-  // addItemToCart(product) {
-  //   const { shoppingCart } = this.state;
-  //   this.setState = {
-  //     shoppingCart: [...shoppingCart, product],
-  //   };
-  // }
-
-  // renderAddButtonCart(product) {
-  //   return (
-  //     <button
-  //       type="button"
-  //       data-testid="product-detail-add-to-cart"
-  //       onClick={ () => this.addItemToCart(product) }
-  //     >
-  //       Adicionar ao carrinho
-  //     </button>
-  //   );
-  // }
 
   render() {
     const { product, pictures, picIndex } = this.state;
@@ -106,7 +85,6 @@ export default class ProductDetails extends Component {
 
         <div>
           { renderAddButtonCart(product) }
-          {/* { console.log(product) } */}
         </div>
       </div>
     );
