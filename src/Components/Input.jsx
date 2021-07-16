@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class Input extends React.Component {
   render() {
-    const { value, type, id, datatestid, onChange, name } = this.props;
+    const { value, type, id, datatestid, onChange, name, placeHolder, onClick } = this.props;
 
     return (
       <input
@@ -13,6 +13,8 @@ export default class Input extends React.Component {
         data-testid={ datatestid }
         onChange={ onChange }
         name={ name }
+        placeHolder={ placeHolder }
+        onClick={ onClick }
       />
     );
   }
@@ -25,4 +27,11 @@ Input.propTypes = {
   datatestid: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  placeHolder: PropTypes.string,
+  onClick: PropTypes.func,
+};
+
+Input.defaultProps = {
+  placeHolder: '',
+  onClick: '',
 };
