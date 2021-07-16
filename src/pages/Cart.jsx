@@ -42,6 +42,7 @@ class Cart extends Component {
       return (
         <div>
           <Link to="/"><AiOutlineHome /></Link>
+          <Link data-testid="checkout-products" to="/checkout">Finalizar compra</Link>
           <div>
             <button
               type="button"

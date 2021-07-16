@@ -20,25 +20,26 @@ export default class Input extends React.Component {
         data-testid={ datatestid }
         onChange={ onChange }
         name={ name }
-        placeHolder={ placeHolder }
+        placeholder={ placeHolder }
         onClick={ onClick }
       />
     );
   }
 }
 
+Input.defaultProps = {
+  placeHolder: '',
+  onClick: () => {},
+  onChange: () => {},
+};
+
 Input.propTypes = {
   value: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   datatestid: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   name: PropTypes.string.isRequired,
   placeHolder: PropTypes.string,
   onClick: PropTypes.func,
-};
-
-Input.defaultProps = {
-  placeHolder: '',
-  onClick: '',
 };
