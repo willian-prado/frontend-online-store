@@ -108,6 +108,8 @@ class App extends Component {
             render={ (props) => (<Checkout
               { ...props }
               cartItems={ cartItems }
+              storeItems={ this.storeItems }
+              getItemsFromStorage={ this.getItemsFromStorage }
             />) }
           />
         </Switch>

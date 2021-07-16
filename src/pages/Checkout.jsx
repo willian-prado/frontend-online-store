@@ -6,9 +6,13 @@ import { RiShoppingCartLine } from 'react-icons/ri';
 import CartItem from '../Components/CartItem';
 
 export default class Checkout extends Component {
+  componentDidMount() {
+    const { getItemsFromStorage } = this.props;
+    getItemsFromStorage();
+  }
+
   render() {
-    const { cartItems } = this.props;
-    console.log(cartItems);
+    const { cartItems, storeItems, getItemsFromStorage } = this.props;
     return (
       <div>
         <Link to="shopping-cart"><RiShoppingCartLine /></Link>
@@ -20,7 +24,10 @@ export default class Checkout extends Component {
               title={ item.title }
               image={ item.thumbnail }
               price={ item.price }
-              quantity={ 1 }
+              quantity={ item.quantity }
+              product={ item }
+              storeItems={ storeItems }
+              getItemsFromStorage={ getItemsFromStorage }
             />))}
           </div>
           <form>
@@ -58,4 +65,6 @@ export default class Checkout extends Component {
 
 Checkout.propTypes = {
   cartItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  storeItems: PropTypes.func.isRequired,
+  getItemsFromStorage: PropTypes.func.isRequired,
 };

@@ -53,7 +53,7 @@ class FormsAvaliation extends Component {
           value={ email }
           type="text"
           id="emailInput"
-          data-testid="emailInput"
+          datatestid="emailInput"
           onChange={ this.handleChange }
           name="email"
           placeHolder="E-mail"
@@ -62,8 +62,7 @@ class FormsAvaliation extends Component {
           value="1"
           type="radio"
           id="radio1"
-          data-testid="radio1"
-          onChange=""
+          datatestid="radio1"
           onClick={ this.handleChange }
           name="radioButton"
         />
@@ -71,8 +70,7 @@ class FormsAvaliation extends Component {
           value="2"
           type="radio"
           id="radio2"
-          data-testid="radio2"
-          onChange=""
+          datatestid="radio2"
           onClick={ this.handleChange }
           name="radioButton"
         />
@@ -80,8 +78,7 @@ class FormsAvaliation extends Component {
           value="3"
           type="radio"
           id="radio3"
-          data-testid="radio3"
-          onChange=""
+          datatestid="radio3"
           onClick={ this.handleChange }
           name="radioButton"
         />
@@ -89,8 +86,7 @@ class FormsAvaliation extends Component {
           value="4"
           type="radio"
           id="radio4"
-          data-testid="radio4"
-          onChange=""
+          datatestid="radio4"
           onClick={ this.handleChange }
           name="radioButton"
         />
@@ -98,8 +94,7 @@ class FormsAvaliation extends Component {
           value="5"
           type="radio"
           id="radio5"
-          data-testid="radio5"
-          onChange=""
+          datatestid="radio5"
           onClick={ this.handleChange }
           name="radioButton"
         />
