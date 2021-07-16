@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 
 export default class Input extends React.Component {
   render() {
-    const { value, type, id, datatestid, onChange, name, placeHolder, onClick } = this.props;
+    const { value,
+      type,
+      id,
+      datatestid,
+      onChange,
+      name,
+      placeHolder,
+      onClick } = this.props;
 
     return (
       <input

@@ -6,9 +6,9 @@ class SaveInfos extends Component {
     const { email, radioButton, comentario } = this.props;
     return (
       <div>
-        { email.map((email, index) => (
+        { email.map((enderecoEmail, index) => (
           <div key={ index }>
-            <p>{ email }</p>
+            <p>{ enderecoEmail }</p>
             <p>{ radioButton[index]}</p>
             <p>{ comentario[index]}</p>
           </div>
