@@ -33,13 +33,10 @@ class Cart extends Component {
     localStorage.removeItem('ItemCart');
     const { getItemsFromStorage } = this.props;
     getItemsFromStorage();
-    // this.setState({
-    //   cartItems: ,
-    // });
   }
 
   render() {
-    const { cartItems } = this.props;
+    const { cartItems, storeItems, getItemsFromStorage } = this.props;
 
     if (cartItems !== undefined) {
       return (
@@ -57,8 +54,11 @@ class Cart extends Component {
               key={ item.id }
               title={ item.title }
               image={ item.thumbnail }
-              price={ item.price }
-              quantity={ 1 }
+              price={ item.price * item.quantity }
+              quantity={ item.quantity }
+              storeItems={ storeItems }
+              product={ item }
+              getItemsFromStorage={ getItemsFromStorage }
             />))}
           </div>
         </div>
@@ -76,6 +76,7 @@ class Cart extends Component {
 Cart.propTypes = {
   getItemsFromStorage: PropTypes.func.isRequired,
   cartItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  storeItems: PropTypes.func.isRequired,
 };
 
 export default Cart;
