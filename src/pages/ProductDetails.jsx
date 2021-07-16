@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { AiOutlineHome } from 'react-icons/ai';
 import ImagesScrollButtons from '../Components/ImagesScrollButtons';
 import ButtonCart from '../Components/ButtonCart';
+import FormsAvaliation from '../Components/FormsAvaliation';
 
 export default class ProductDetails extends Component {
   constructor() {
@@ -108,6 +109,7 @@ export default class ProductDetails extends Component {
           { renderAddButtonCart(product) }
           {/* { console.log(product) } */}
         </div>
+        <FormsAvaliation />
       </div>
     );
   }
