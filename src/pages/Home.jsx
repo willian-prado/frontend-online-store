@@ -15,6 +15,7 @@ class Home extends Component {
       id: '',
       categories: [],
     };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.setProductsCategory = this.setProductsCategory.bind(this);
@@ -22,6 +23,7 @@ class Home extends Component {
 
   componentDidMount() {
     this.fetchCategories();
+    this.getTotalCart();
   }
 
   handleChange({ target }) {
@@ -34,6 +36,16 @@ class Home extends Component {
 
   handleClick() {
     this.fetchProduct();
+  }
+
+  // Requisito 13
+  getTotalCart() {
+    const actualStorage = JSON.parse(localStorage.getItem('ItemCart'));
+    const totalItems = actualStorage.reduce((acc, curr) => acc + curr.quantity, 0);
+    this.setState({
+      totalItems,
+    });
+    console.log(totalItems);
   }
 
   // Requisito 6 - Ajuda monitor Daniel para a integrante Marcela
@@ -61,10 +73,11 @@ class Home extends Component {
   }
 
   render() {
-    const { searchText, products, categories } = this.state;
+    const { searchText, products, categories, totalItems } = this.state;
     const { storeItems } = this.props;
     return (
       <div>
+        <span data-testid="shopping-cart-size">{ totalItems }</span>
         <ButtonCart />
         <h4 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
