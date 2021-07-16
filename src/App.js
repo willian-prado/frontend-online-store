@@ -13,7 +13,6 @@ class App extends Component {
       cartItems: [],
     };
     this.renderAddButtonCart = this.renderAddButtonCart.bind(this);
-    // this.addItemToCart = this.addItemToCart.bind(this);
     this.getItemsFromStorage = this.getItemsFromStorage.bind(this);
     this.storeItems = this.storeItems.bind(this);
   }
@@ -35,21 +34,28 @@ class App extends Component {
   }
 
   storeItems(product) {
+    const myProduct = product;
+    myProduct.quantity = 1;
     if (localStorage.getItem('ItemCart') !== null) {
       let actualStorage = JSON.parse(localStorage.getItem('ItemCart'));
-      actualStorage = [...actualStorage, product];
+      let count = 0;
+      let index;
+      actualStorage.forEach((item, ind) => {
+        if (item.id === product.id) {
+          index = ind;
+          count += 1;
+        }
+      });
+      if (count > 0) {
+        actualStorage[index].quantity += 1;
+      } else {
+        actualStorage = [...actualStorage, myProduct];
+      }
       localStorage.setItem('ItemCart', JSON.stringify(actualStorage));
     } else {
-      localStorage.setItem('ItemCart', JSON.stringify([product]));
+      localStorage.setItem('ItemCart', JSON.stringify([myProduct]));
     }
   }
-
-  // addItemToCart(product) {
-  //   const { cartItems } = this.state;
-  //   this.setState({
-  //     cartItems: [...cartItems, product],
-  //   });
-  // }
 
   renderAddButtonCart(product) {
     return (
@@ -86,6 +92,7 @@ class App extends Component {
               { ...props }
               cartItems={ cartItems }
               getItemsFromStorage={ this.getItemsFromStorage }
+              storeItems={ this.storeItems }
             />) }
           />
           <Route
