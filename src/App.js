@@ -11,6 +11,7 @@ class App extends Component {
     super();
     this.state = {
       cartItems: [],
+      // totalItems: 0,
     };
     this.renderAddButtonCart = this.renderAddButtonCart.bind(this);
     this.getItemsFromStorage = this.getItemsFromStorage.bind(this);
@@ -30,6 +31,16 @@ class App extends Component {
       });
     }
   }
+
+  // Requisito 13
+  // getTotalCart() {
+  //   const actualStorage = JSON.parse(localStorage.getItem('ItemCart'));
+  //   const totalItems = actualStorage.reduce((acc, curr) => acc + curr.quantity, 0);
+  //   this.setState({
+  //     totalItems,
+  //   });
+  //   console.log(totalItems);
+  // }
 
   storeItems(product) {
     const myProduct = product;
@@ -53,6 +64,15 @@ class App extends Component {
     } else {
       localStorage.setItem('ItemCart', JSON.stringify([myProduct]));
     }
+
+    // 13
+    // const actualStorage = JSON.parse(localStorage.getItem('ItemCart'));
+    // const totalItems = actualStorage.reduce((acc, curr) => acc + curr.quantity, 0);
+    // this.setState({
+    //   totalItems,
+    // });
+
+    // this.getTotalCart();
   }
 
   renderAddButtonCart(product) {
@@ -99,6 +119,7 @@ class App extends Component {
             render={ (props) => (<Home
               { ...props }
               storeItems={ this.storeItems }
+              totalItems={ cartItems.length }
             />) }
           />
         </Switch>

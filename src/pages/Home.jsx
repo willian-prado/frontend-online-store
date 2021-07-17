@@ -23,7 +23,6 @@ class Home extends Component {
 
   componentDidMount() {
     this.fetchCategories();
-    this.getTotalCart();
   }
 
   handleChange({ target }) {
@@ -36,16 +35,6 @@ class Home extends Component {
 
   handleClick() {
     this.fetchProduct();
-  }
-
-  // Requisito 13
-  getTotalCart() {
-    const actualStorage = JSON.parse(localStorage.getItem('ItemCart'));
-    const totalItems = actualStorage.reduce((acc, curr) => acc + curr.quantity, 0);
-    this.setState({
-      totalItems,
-    });
-    console.log(totalItems);
   }
 
   // Requisito 6 - Ajuda monitor Daniel para a integrante Marcela
@@ -73,11 +62,18 @@ class Home extends Component {
   }
 
   render() {
-    const { searchText, products, categories, totalItems } = this.state;
-    const { storeItems } = this.props;
+    const { searchText, products, categories } = this.state;
+    const { storeItems, totalItems } = this.props;
     return (
       <div>
-        <span data-testid="shopping-cart-size">{ totalItems }</span>
+        <div data-testid="shopping-cart-size">
+          { totalItems ? (
+            <span>{ totalItems }</span>
+          ) : (
+            '0'
+          )}
+          {console.log(totalItems)}
+        </div>
         <ButtonCart />
         <h4 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
@@ -112,6 +108,7 @@ class Home extends Component {
 
 Home.propTypes = {
   storeItems: PropTypes.func.isRequired,
+  totalItems: PropTypes.number.isRequired,
 };
 
 export default Home;
