@@ -14,7 +14,7 @@ export default class ProductDetails extends Component {
       product: undefined,
       pictures: [],
       picIndex: 0,
-      // shoppingCart: [],
+    //  shoppingCart: 0,
     };
 
     this.decreasePicIndex = this.decreasePicIndex.bind(this);
@@ -53,33 +53,13 @@ export default class ProductDetails extends Component {
       return { picIndex: picIndex + 1 };
     });
   }
-  // funções abaixo p requisito 9
-
-  // addItemToCart(product) {
-  //   const { shoppingCart } = this.state;
-  //   this.setState = {
-  //     shoppingCart: [...shoppingCart, product],
-  //   };
-  // }
-
-  // renderAddButtonCart(product) {
-  //   return (
-  //     <button
-  //       type="button"
-  //       data-testid="product-detail-add-to-cart"
-  //       onClick={ () => this.addItemToCart(product) }
-  //     >
-  //       Adicionar ao carrinho
-  //     </button>
-  //   );
-  // }
 
   render() {
     const { product, pictures, picIndex } = this.state;
     const { renderAddButtonCart } = this.props;
 
     if (!product) return null;
-    const { title, attributes } = product;
+    const { title, attributes, shipping, price } = product;
 
     return (
       <div>
@@ -95,6 +75,13 @@ export default class ProductDetails extends Component {
                 increaseIndex={ this.increasePicIndex }
               />
           }
+          <h3>{`Preço: R$ ${price}`}</h3>
+          <div>
+            {
+              (shipping.free_shipping)
+              && <h3 data-testid="free-shipping">Frete Grátis</h3>
+            }
+          </div>
           <h3>Características principais</h3>
           <ol>
             {attributes.map((attribute) => {
@@ -107,7 +94,6 @@ export default class ProductDetails extends Component {
 
         <div>
           { renderAddButtonCart(product) }
-          {/* { console.log(product) } */}
         </div>
         <FormsAvaliation />
       </div>
