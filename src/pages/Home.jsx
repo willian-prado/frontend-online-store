@@ -22,6 +22,8 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    const { getQuantityTotal } = this.props;
+    getQuantityTotal();
     this.fetchCategories();
   }
 
@@ -63,18 +65,10 @@ class Home extends Component {
 
   render() {
     const { searchText, products, categories } = this.state;
-    const { storeItems, totalItems } = this.props;
+    const { storeItems, quantityTotal } = this.props;
     return (
       <div>
-        <div data-testid="shopping-cart-size">
-          { totalItems ? (
-            <span>{ totalItems }</span>
-          ) : (
-            '0'
-          )}
-          {console.log(totalItems)}
-        </div>
-        <ButtonCart />
+        <ButtonCart quantityTotal={ quantityTotal } />
         <h4 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h4>
@@ -108,7 +102,8 @@ class Home extends Component {
 
 Home.propTypes = {
   storeItems: PropTypes.func.isRequired,
-  totalItems: PropTypes.number.isRequired,
+  quantityTotal: PropTypes.number.isRequired,
+  getQuantityTotal: PropTypes.func.isRequired,
 };
 
 export default Home;

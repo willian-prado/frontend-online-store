@@ -11,11 +11,12 @@ class App extends Component {
     super();
     this.state = {
       cartItems: [],
-      // totalItems: 0,
+      quantityTotal: 0,
     };
     this.renderAddButtonCart = this.renderAddButtonCart.bind(this);
     this.getItemsFromStorage = this.getItemsFromStorage.bind(this);
     this.storeItems = this.storeItems.bind(this);
+    this.getQuantityTotal = this.getQuantityTotal.bind(this);
   }
 
   getItemsFromStorage() {
@@ -33,14 +34,16 @@ class App extends Component {
   }
 
   // Requisito 13
-  // getTotalCart() {
-  //   const actualStorage = JSON.parse(localStorage.getItem('ItemCart'));
-  //   const totalItems = actualStorage.reduce((acc, curr) => acc + curr.quantity, 0);
-  //   this.setState({
-  //     totalItems,
-  //   });
-  //   console.log(totalItems);
-  // }
+  getQuantityTotal() {
+    let quantityTotal = 0;
+    const actualStorage = JSON.parse(localStorage.getItem('ItemCart'));
+    if (actualStorage) {
+      quantityTotal = actualStorage.reduce((acc, curr) => acc + curr.quantity, 0);
+    }
+    this.setState({
+      quantityTotal,
+    });
+  }
 
   storeItems(product) {
     const myProduct = product;
@@ -68,15 +71,7 @@ class App extends Component {
     } else {
       localStorage.setItem('ItemCart', JSON.stringify([myProduct]));
     }
-
-    // 13
-    // const actualStorage = JSON.parse(localStorage.getItem('ItemCart'));
-    // const totalItems = actualStorage.reduce((acc, curr) => acc + curr.quantity, 0);
-    // this.setState({
-    //   totalItems,
-    // });
-
-    // this.getTotalCart();
+    this.getQuantityTotal();
   }
 
   renderAddButtonCart(product) {
@@ -92,7 +87,7 @@ class App extends Component {
   }
 
   render() {
-    const { cartItems } = this.state;
+    const { cartItems, quantityTotal } = this.state;
 
     return (
       <BrowserRouter>
@@ -105,6 +100,8 @@ class App extends Component {
               cartItems={ cartItems }
               renderAddButtonCart={ this.renderAddButtonCart }
               storeItems={ this.storeItems }
+              getQuantityTotal={ this.getQuantityTotal }
+              quantityTotal={ quantityTotal }
             />) }
           />
           <Route
@@ -123,7 +120,8 @@ class App extends Component {
             render={ (props) => (<Home
               { ...props }
               storeItems={ this.storeItems }
-              totalItems={ cartItems.length }
+              getQuantityTotal={ this.getQuantityTotal }
+              quantityTotal={ quantityTotal }
             />) }
           />
           <Route

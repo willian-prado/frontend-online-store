@@ -21,7 +21,9 @@ export default class ProductDetails extends Component {
   }
 
   componentDidMount() {
+    const { getQuantityTotal } = this.props;
     this.getProduct();
+    getQuantityTotal();
   }
 
   async getProduct() {
@@ -53,18 +55,12 @@ export default class ProductDetails extends Component {
     });
   }
 
-  render() {
-    const { product, pictures, picIndex/* , totalItems */ } = this.state;
+  contentRender() {
+    const { product, pictures, picIndex } = this.state;
     const { renderAddButtonCart } = this.props;
-
-    if (!product) return null;
     const { title, attributes, shipping, price } = product;
-
     return (
       <div>
-        <Link to="/"><AiOutlineHome /></Link>
-        {/* <p data-testid="shopping-cart-size">{ totalItems }</p> */}
-        <ButtonCart />
         <h3 data-testid="product-detail-name">{ title }</h3>
         <img src={ pictures[picIndex].url } alt={ title } />
         <div>
@@ -99,6 +95,22 @@ export default class ProductDetails extends Component {
       </div>
     );
   }
+
+  render() {
+    const { product } = this.state;
+    const { quantityTotal } = this.props;
+
+    // if (product) return null;
+    // const { title, attributes, shipping, price } = product;
+
+    return (
+      <div>
+        <Link to="/"><AiOutlineHome /></Link>
+        <ButtonCart quantityTotal={ quantityTotal } />
+        {product && this.contentRender(product) }
+      </div>
+    );
+  }
 }
 
 ProductDetails.propTypes = {
@@ -108,4 +120,6 @@ ProductDetails.propTypes = {
     }).isRequired,
   }).isRequired,
   renderAddButtonCart: PropTypes.func.isRequired,
+  quantityTotal: PropTypes.number.isRequired,
+  getQuantityTotal: PropTypes.func.isRequired,
 };

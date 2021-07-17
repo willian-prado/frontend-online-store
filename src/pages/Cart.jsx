@@ -25,7 +25,7 @@ class Cart extends Component {
   render() {
     const { cartItems, storeItems, getItemsFromStorage } = this.props;
 
-    if (cartItems !== undefined) {
+    if (cartItems.length) {
       return (
         <div>
           <Link to="/"><AiOutlineHome /></Link>
@@ -61,9 +61,13 @@ class Cart extends Component {
   }
 }
 
+Cart.defaultProps = {
+  cartItems: [],
+};
+
 Cart.propTypes = {
   getItemsFromStorage: PropTypes.func.isRequired,
-  cartItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  cartItems: PropTypes.arrayOf(PropTypes.object),
   storeItems: PropTypes.func.isRequired,
 };
 
