@@ -47,7 +47,11 @@ class App extends Component {
         }
       });
       if (count > 0) {
-        actualStorage[index].quantity += 1;
+        const avaliableQuantity = 'available_quantity';
+        const maxQuant = actualStorage[index][avaliableQuantity];
+        if (actualStorage[index].quantity < maxQuant) {
+          actualStorage[index].quantity += 1;
+        }
       } else {
         actualStorage = [...actualStorage, myProduct];
       }
