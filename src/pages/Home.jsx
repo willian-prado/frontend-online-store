@@ -63,18 +63,14 @@ class Home extends Component {
 
   render() {
     const { searchText, products, categories } = this.state;
-    const { storeItems, totalItems } = this.props;
+    const { storeItems/* totalItems */ } = this.props;
     return (
       <div>
-        <div data-testid="shopping-cart-size">
-          { totalItems ? (
-            <span>{ totalItems }</span>
-          ) : (
-            '0'
-          )}
-          {console.log(totalItems)}
-        </div>
-        <ButtonCart />
+        <ButtonCart>
+          {/* <span data-testid="shopping-cart-size">
+            { totalItems }
+          </span> */}
+        </ButtonCart>
         <h4 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h4>

@@ -88,7 +88,7 @@ class App extends Component {
   }
 
   render() {
-    const { cartItems } = this.state;
+    const { cartItems/* , totalItems */ } = this.state;
 
     return (
       <BrowserRouter>
@@ -119,7 +119,7 @@ class App extends Component {
             render={ (props) => (<Home
               { ...props }
               storeItems={ this.storeItems }
-              totalItems={ cartItems.length }
+              /* totalItems={ totalItems } */
             />) }
           />
         </Switch>
