@@ -15,13 +15,15 @@ class Home extends Component {
       id: '',
       categories: [],
     };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.setProductsCategory = this.setProductsCategory.bind(this);
-    // this.storeItems = this.storeItems.bind(this);
   }
 
   componentDidMount() {
+    const { getQuantityTotal } = this.props;
+    getQuantityTotal();
     this.fetchCategories();
   }
 
@@ -37,7 +39,7 @@ class Home extends Component {
     this.fetchProduct();
   }
 
-  // Requisito 6 - Ajuda monitor Daniel
+  // Requisito 6 - Ajuda monitor Daniel para a integrante Marcela
   async setProductsCategory(id) {
     this.setState({
       id,
@@ -52,17 +54,6 @@ class Home extends Component {
     });
   }
 
-  // requisito 8
-  // storeItems(product) {
-  //   if (localStorage.getItem('ItemCart') !== null) {
-  //     let actualStorage = JSON.parse(localStorage.getItem('ItemCart'));
-  //     actualStorage = [...actualStorage, product];
-  //     localStorage.setItem('ItemCart', JSON.stringify(actualStorage));
-  //   } else {
-  //     localStorage.setItem('ItemCart', JSON.stringify([product]));
-  //   }
-  // }
-
   async fetchProduct() {
     const { id, searchText } = this.state;
     const { results: products } = await productsAPI
@@ -74,10 +65,10 @@ class Home extends Component {
 
   render() {
     const { searchText, products, categories } = this.state;
-    const { storeItems } = this.props;
+    const { storeItems, quantityTotal } = this.props;
     return (
       <div>
-        <ButtonCart />
+        <ButtonCart quantityTotal={ quantityTotal } />
         <h4 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h4>
@@ -111,6 +102,8 @@ class Home extends Component {
 
 Home.propTypes = {
   storeItems: PropTypes.func.isRequired,
+  quantityTotal: PropTypes.number.isRequired,
+  getQuantityTotal: PropTypes.func.isRequired,
 };
 
 export default Home;
