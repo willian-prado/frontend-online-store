@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Cart from './pages/Cart';
 import './App.css';
-
 import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
+import Checkout from './pages/Checkout';
 
 class App extends Component {
   constructor() {
@@ -56,7 +56,11 @@ class App extends Component {
         }
       });
       if (count > 0) {
-        actualStorage[index].quantity += 1;
+        const avaliableQuantity = 'available_quantity';
+        const maxQuant = actualStorage[index][avaliableQuantity];
+        if (actualStorage[index].quantity < maxQuant) {
+          actualStorage[index].quantity += 1;
+        }
       } else {
         actualStorage = [...actualStorage, myProduct];
       }
@@ -120,6 +124,15 @@ class App extends Component {
               { ...props }
               storeItems={ this.storeItems }
               totalItems={ cartItems.length }
+            />) }
+          />
+          <Route
+            path="/checkout"
+            render={ (props) => (<Checkout
+              { ...props }
+              cartItems={ cartItems }
+              storeItems={ this.storeItems }
+              getItemsFromStorage={ this.getItemsFromStorage }
             />) }
           />
         </Switch>

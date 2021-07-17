@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { AiOutlineHome } from 'react-icons/ai';
 import ImagesScrollButtons from '../Components/ImagesScrollButtons';
 import ButtonCart from '../Components/ButtonCart';
+import FormsAvaliation from '../Components/FormsAvaliation';
 
 export default class ProductDetails extends Component {
   constructor() {
@@ -57,7 +58,7 @@ export default class ProductDetails extends Component {
     const { renderAddButtonCart } = this.props;
 
     if (!product) return null;
-    const { title, attributes } = product;
+    const { title, attributes, shipping, price } = product;
 
     return (
       <div>
@@ -74,6 +75,13 @@ export default class ProductDetails extends Component {
                 increaseIndex={ this.increasePicIndex }
               />
           }
+          <h3>{`Preço: R$ ${price}`}</h3>
+          <div>
+            {
+              (shipping.free_shipping)
+              && <h3 data-testid="free-shipping">Frete Grátis</h3>
+            }
+          </div>
           <h3>Características principais</h3>
           <ol>
             {attributes.map((attribute) => {
@@ -87,6 +95,7 @@ export default class ProductDetails extends Component {
         <div>
           { renderAddButtonCart(product) }
         </div>
+        <FormsAvaliation />
       </div>
     );
   }
