@@ -14,6 +14,7 @@ export default class ProductDetails extends Component {
       product: undefined,
       pictures: [],
       picIndex: 0,
+    //  shoppingCart: 0,
     };
 
     this.decreasePicIndex = this.decreasePicIndex.bind(this);
