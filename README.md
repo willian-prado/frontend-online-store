@@ -25,7 +25,7 @@ A página irá consumir os dados da API do _Mercado Livre_ para realizar a busca
 - Trabalhar em equipes utilizando Kanban ou Scrum de maneira eficaz
 - Praticar todas as habilidades desenvolvidas até agora no módulo de Front-End
 
-*Projeto desenvolvido em grupo com Henrique Alarcon, Marcela Oliveira e Miguel Retroz
+*Projeto desenvolvido em grupo com Henrique Alarcon, Marcela Oliveira e Miguel Retroz*
 
 ---
 
