@@ -7,7 +7,7 @@ Essa construção foi acompanhada por um quadro Kanbam no aplicativo Trello que 
 
 **Objetivo do projeto**
 
-Neste projeto criamos uma versão simplificada, sem persistência no banco de dados, de uma **loja online**, desenvolvendo em grupo suas funcionalidades de acordo com demandas definidas em um quadro _Kanban_, em um cenário mais próximo ao do mercado de trabalho.
+Neste projeto criamos uma versão simplificada, sem persistência no banco de dados, de uma **loja online**, desenvolvendo em grupo suas funcionalidades de acordo com demandas definidas, em um cenário mais próximo ao do mercado de trabalho.
 Entre as funcionalidades da aplicação temos a opção de:
 
   - Buscar produtos por termos e categorias a partir da _API do Mercado Livre_;
@@ -24,6 +24,8 @@ A página irá consumir os dados da API do _Mercado Livre_ para realizar a busca
 - Entender o que é Scrum
 - Trabalhar em equipes utilizando Kanban ou Scrum de maneira eficaz
 - Praticar todas as habilidades desenvolvidas até agora no módulo de Front-End
+
+*Projeto desenvolvido em grupo com Henrique Alarcon, Marcela Oliveira e Miguel Retroz
 
 ---
 
@@ -42,15 +44,15 @@ A página irá consumir os dados da API do _Mercado Livre_ para realizar a busca
 **9 - Adicione um produto ao carrinho a partir de sua tela de exibição detalhada** \
 **10 - Visualize a lista de produtos adicionados ao carrinho em sua página e permita a manipulação da sua quantidade** \
 **11 - Avalie e comente acerca de um produto em sua tela de exibição detalhada** \
-**12 - Finalize a compra vendo um resumo dela, preenchendo os seus dados e escolhendo a forma de pagamento** \
+**12 - Finalize a compra vendo um resumo dela, preenchendo os seus dados e escolhendo a forma de pagamento**
 
-### Bônus
+#### Bônus
 
 **13. Mostre junto ao ícone do carrinho a quantidade de produtos dentro dele, em todas as telas em que ele aparece** \
 **14. Limite a quantidade de produtos adicionados ao carrinho pela quantidade disponível em estoque** \
-**15. Mostre quais produtos tem o frete grátis** \
+**15. Mostre quais produtos tem o frete grátis**
 
-### Extras (não avaliativos):
+#### Extras (não avaliativos):
 
 **16. Faça um layout para o site** \
 **17. Faça um layout responsivo para o site** \
@@ -58,4 +60,4 @@ A página irá consumir os dados da API do _Mercado Livre_ para realizar a busca
 **19. Coloque uma animação no carrinho para quando um produto for adicionado** \
 **20. Crie um slider lateral para exibir o carrinho na tela principal** \
 **21. Destaque, na tela principal, os produtos já adicionados ao carrinho** \
-**22. Impeça que a quantidade do produto seja negativa** \
+**22. Impeça que a quantidade do produto seja negativa**
