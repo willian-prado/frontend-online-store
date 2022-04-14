@@ -1,6 +1,9 @@
 ## Projeto Frontend Online Store
 
-Quarto projeto do módulo de Front-end do curso de desenvolvimento web da Trybe. \
+> Quarto projeto do módulo de Front-end do curso de desenvolvimento web da Trybe.
+
+**Contexto**
+
 Esse é o primeiro projeto em grupo do módulo de Front-end e nele somos apresentados às metodologias ágeis de forma prática.
 Os requisitos da aplicação foram distribuídos entre os membros do grupo e desenvolvidos em paralelo quando possível.
 Essa construção foi acompanhada por um quadro Kanbam no aplicativo Trello que era atualizado constantemente.
@@ -25,11 +28,20 @@ A página irá consumir os dados da API do _Mercado Livre_ para realizar a busca
 - Trabalhar em equipes utilizando Kanban ou Scrum de maneira eficaz
 - Praticar todas as habilidades desenvolvidas até agora no módulo de Front-End
 
+**Tecnologias utilizadas**
+
+- <a href="https://www.w3.org/html/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" title="HTML5" align="center" height="35"/> - HTML</a> 
+- <a href="https://www.w3schools.com/css/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" title="CCS3" align="center" height="35"/> - CSS</a>
+- <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" title="JavaScript" align="center" height="30"/> - JavaScript</a>
+- <a href="https://reactjs.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" title="React" align="center" height="35"/> - React</a>
+- <a href="https://reactrouter.com/docs/en/v6/getting-started/overview"><img src="https://reacttraining.com/images/blog/reach-react-router-future.png" title="React Router" align="center" height="30"/> - React Router</a>
+- <a href="https://trello.com/"><img src="https://trackingtime.co/wp-content/themes/trackingtime-v4/img/temp/logos/trello.png" title="Trello" height="30" align="center"/>  - Trello</a>
+
 *Projeto desenvolvido em grupo com Aldria Melo, Henrique Alarcon, Marcela Oliveira e Miguel Retroz*
 
 ---
 
-### Lista de requisitos propostos:
+### Lista de requisitos propostos pela Trybe:
 
 #### Obrigatórios
 
