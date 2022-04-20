@@ -1,12 +1,12 @@
 ## Projeto Frontend Online Store
 
-> Quarto projeto do módulo de Front-end do curso de desenvolvimento web da Trybe.
+> Quarto projeto do módulo de Front-end do curso de desenvolvimento web da [Trybe](https://www.betrybe.com/)
 
 **Contexto**
 
 Esse é o primeiro projeto em grupo do módulo de Front-end e nele somos apresentados às metodologias ágeis de forma prática.
 Os requisitos da aplicação foram distribuídos entre os membros do grupo e desenvolvidos em paralelo quando possível.
-Essa construção foi acompanhada por um quadro Kanbam no aplicativo Trello que era atualizado constantemente.
+Essa construção foi acompanhada por um quadro Kanban no aplicativo Trello que era atualizado constantemente.
 
 **Objetivo do projeto**
 
@@ -20,7 +20,7 @@ Entre as funcionalidades da aplicação temos a opção de:
 
 A página irá consumir os dados da API do _Mercado Livre_ para realizar a busca de itens da loja online.
 
-**Principais habilidades desenvolvidas nesse trabalho:**
+**Principais habilidades desenvolvidas nesse trabalho**
 
 - Entender o que são Métodos Ágeis
 - Entender o que é Kanban
@@ -37,7 +37,7 @@ A página irá consumir os dados da API do _Mercado Livre_ para realizar a busca
 - <a href="https://reactrouter.com/docs/en/v6/getting-started/overview"><img src="https://reacttraining.com/images/blog/reach-react-router-future.png" title="React Router" align="center" height="30"/> - React Router</a>
 - <a href="https://trello.com/"><img src="https://trackingtime.co/wp-content/themes/trackingtime-v4/img/temp/logos/trello.png" title="Trello" height="30" align="center"/>  - Trello</a>
 
-*Projeto desenvolvido em grupo com Aldria Melo, Henrique Alarcon, Marcela Oliveira e Miguel Retroz*
+*Projeto desenvolvido em grupo com [Aldria Melo](https://github.com/AldriaMelo), [Henrique Alarcon](https://github.com/Henriquealarcon), [Marcela Oliveira](https://github.com/marcelaops) e [Miguel Retroz](https://github.com/miguelretroz)*.
 
 ---
 
@@ -73,3 +73,8 @@ A página irá consumir os dados da API do _Mercado Livre_ para realizar a busca
 **20. Crie um slider lateral para exibir o carrinho na tela principal** \
 **21. Destaque, na tela principal, os produtos já adicionados ao carrinho** \
 **22. Impeça que a quantidade do produto seja negativa**
+
+---
+
+[Ir para a lista de projetos](https://github.com/willian-prado/trybe-records)
+
